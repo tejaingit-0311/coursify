@@ -4,9 +4,10 @@ const dotEnv = require("dotenv");
 const { adminRouter } = require("./routes/admin");
 const { userRouter } = require("./routes/user");
 const { connectToDB } = require("./db/index");
-
+const cors = require("cors");
 //Middleware:
 app.use(express.json());
+app.use(cors());
 
 //Routers:
 app.use("/admins", adminRouter);

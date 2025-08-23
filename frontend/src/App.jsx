@@ -5,6 +5,7 @@ function App() {
     <>
       {/* start  writing from here */}
       <Home />
+      
     </>
   );
 }

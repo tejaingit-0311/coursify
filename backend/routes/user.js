@@ -33,7 +33,7 @@ userRouter.post("/signup", async (req, res) => {
     } catch (error) {
       console.log(error);
       res.status(409).send({
-        success: true,
+        success: false,
         error: {
           code: "USER_ALREADY_EXISTS",
           message: "User Already Exists",
@@ -66,7 +66,6 @@ userRouter.post("/signin", async (req, res) => {
 
     //find-user:
     const user = await UserModel.findOne({username: username});
-    let x = 0;
 
     //1. user=null;
     //2. user = {name:"ravi", password:"123"};
