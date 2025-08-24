@@ -2,6 +2,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { Toaster, toast} from "sonner";
 // import { config } from "dotenv";
 // config();
 const Login = () => {
@@ -42,15 +43,21 @@ const Login = () => {
       // alert(response.data.data.message);
       //set-token:
       localStorage.setItem("token", response.data.data.token);
-      setResponseMessage(response.data.data.message);
+      toast.success(response.data.data.message);
+
     })
     .catch((error)=>{
       console.error(error);
-      // alert(error.message || "Error While sign-in");
-      setResponseMessage(response.data.data.message);
+      //n/w error: 
+      if(!error.status)
+        toast.error(error.message);
+      //sign-in error:  
+      else
+        toast.error(error.response.data.error.message);
     });
   }
   return <div>
+    <Toaster />
     <form name="sign-in-form" onSubmit={handleLogin}>
       <label>
         Username:
