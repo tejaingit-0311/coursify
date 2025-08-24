@@ -31,13 +31,14 @@ const Register = () => {
       )
       .then((response)=>{
         alert(response.data.data.message);
+        setResponseMessage(response.data.data.message);
       })
       .catch((error)=>{
         console.log(error.response);
         alert(error.response.data.error.message || "Error While sign-up");
+        setResponseMessage(error.response.data.error.message);
       })
-
-  
+      
   }
 
   function handleInput(e){
