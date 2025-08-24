@@ -38,7 +38,7 @@ const Register = () => {
         alert(error.response.data.error.message || "Error While sign-up");
         setResponseMessage(error.response.data.error.message);
       })
-      
+
   }
 
   function handleInput(e){
@@ -47,7 +47,7 @@ const Register = () => {
     let fieldValue = e.target.value;
     let fieldName = e.target.name;
     setUserDetails((prev)=>{
-      ({...prev, [fieldName] : fieldValue})
+      return {...prev, [fieldName] : fieldValue}    
     });
     
     console.log(userDetails);
