@@ -12,6 +12,7 @@ const Login = () => {
         password : ""
       }
   );
+  const [responseMessage, setResponseMessage] = useState("");
 
   function handleInput(event){
     let fieldName = event.target.name;
@@ -21,11 +22,12 @@ const Login = () => {
     setUserDetails((prev)=>{
       return {...prev, [fieldName] : fieldValue}
     });
-    console.log(userDetails);
+   
   }
 
   // call the functions onClick of button.
   async function handleLogin(event) {
+    console.log(userDetails);
     event.preventDefault();
     await axios.post(
       `http://localhost:3001/users/signin?username=${userDetails.username}&password=${userDetails.password}`, 
@@ -37,11 +39,15 @@ const Login = () => {
     )
     .then((response)=>{
       console.log(response);
-      alert(response.data.data.message);
+      // alert(response.data.data.message);
+      //set-token:
+      localStorage.setItem("token", response.data.data.token);
+      setResponseMessage(response.data.data.message);
     })
     .catch((error)=>{
       console.error(error);
-      alert(error.message || "Error While sign-in");
+      // alert(error.message || "Error While sign-in");
+      setResponseMessage(response.data.data.message);
     });
   }
   return <div>
@@ -60,6 +66,7 @@ const Login = () => {
 
       <button type="submit">Submit</button>
     </form>
+    {responseMessage}
   </div>;
 };
 

@@ -53,8 +53,9 @@ userRouter.post("/signup", async (req, res) => {
 userRouter.post("/signin", async (req, res) => {
   try {
     const { username, password } = req.query;
+
     //if either of it doesn't exist:
-    if (username === "" || password === "") {
+    if (!username || !password) {
       return res.status(400).json({
         success: false,
         error: {
@@ -66,20 +67,26 @@ userRouter.post("/signin", async (req, res) => {
 
     //find-user:
     const user = await UserModel.findOne({username: username});
-
+    // console.log(user);
     //1. user=null;
     //2. user = {name:"ravi", password:"123"};
-    if (!user || !bcrypt.compare(password, user.password)) {
+
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      if(!user)
+        console.log(`User Not Found`);
+      else
+        console.log(`Incorrect Password`);
       return res
-        .status(404)
+        .status(401)
         .json({
           success: false,
           error: {
             code: "INVALID_CREDENTIALS",
             message: "Invalid email or password",
           },
-        });
+        }); 
     }
+    
 
     //give-token:
     const token = jwt.sign(
@@ -91,7 +98,7 @@ userRouter.post("/signin", async (req, res) => {
       process.env.JWT_SECRET,
     );
 
-    console.log(user);
+    // console.log(user);
 
     res.status(200).json({
       success: true,
