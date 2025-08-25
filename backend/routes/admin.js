@@ -223,9 +223,7 @@ adminRouter.put(
 );
 
 //remove-a-course:
-adminRouter.delete(
-  "/courses/:courseId",
-  isValidCourseIdMiddleware,
+adminRouter.delete("/courses/:courseId", isValidCourseIdMiddleware,
   async (req, res) => {
     try {
       const { courseId } = req.params;
