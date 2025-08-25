@@ -2,7 +2,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import { useEffect } from "react";
+import { Toaster, toast } from "sonner";
 const Register = () => {
 
   const [userDetails, setUserDetails] = useState(
@@ -11,8 +11,8 @@ const Register = () => {
           email:"",
           password:""
         }
-    );
-  const [responseMessage, setResponseMessage] = useState("");
+  );
+  // const [responseMessage, setResponseMessage] = useState("");
 
   // call the functions onClick of button.
   async function handleRegister(event) {
@@ -30,15 +30,18 @@ const Register = () => {
         }    
       )
       .then((response)=>{
-        alert(response.data.data.message);
-        setResponseMessage(response.data.data.message);
+        // alert(response.data.data.message);
+        // setResponseMessage(response.data.data.message);
+        toast(response.data.data.message);
       })
       .catch((error)=>{
-        console.log(error.response);
-        alert(error.response.data.error.message || "Error While sign-up");
-        setResponseMessage(error.response.data.error.message);
+        // console.log(error.response);
+        if(!error.status)
+          toast.error(error.message);
+        //sign-up error:  
+        else
+          toast.error(error.response.data.error.message);
       })
-
   }
 
   function handleInput(e){
@@ -49,10 +52,10 @@ const Register = () => {
     setUserDetails((prev)=>{
       return {...prev, [fieldName] : fieldValue}    
     });
-    
     console.log(userDetails);
   }
   return <div>
+    <Toaster />
     <form name="sign-up-form" onSubmit={handleRegister}>
       <label htmlFor="username" aria-required="true">Username:</label>
       <input type="text" id="username" name="username" value={userDetails.username} placeholder="enter username" onChange={handleInput} required/>
@@ -70,7 +73,7 @@ const Register = () => {
 
       <button>Submit</button>
     </form>
-    {responseMessage}
+
   </div>
 };
 
