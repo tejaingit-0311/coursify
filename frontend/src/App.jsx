@@ -1,5 +1,7 @@
 // firstly, Don't get overwhelmed and if you are then go with client-easy.
+import "./App.css";
 import Home from "./pages/Home";
+
 function App() {
   return (
     <>
