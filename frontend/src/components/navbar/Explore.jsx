@@ -1,10 +1,11 @@
 
 import { Button } from "@mui/material";
 const Explore = () => {
-    return 
-    <>
-        <Button variant="text"> Explore</Button>
-    </>
+    return (
+        <div>
+            <Button variant="text" class="hover:text-red-500"> Explore</Button>
+        </div>
+    )
 }
 
 export default Explore
