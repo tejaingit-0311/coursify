@@ -3,12 +3,13 @@ import React from "react";
 
 // compoents imports
 import Login from "../components/Login";
-import Register from "../components/Register";
+import RegisterButton from "../components/navbar/RegisterButton";
 import Courses from "../components/Courses";
 import Explore from "../components/navbar/Explore";
 import Search from "../components/navbar/Search";
 import Avatar from "../components/navbar/ProfileIcon";
 import { colors } from "@mui/material";
+import LoginButton from "../components/navbar/LoginButton";
 const Home = () => {
   return (
     //  write home page UI code here
@@ -18,6 +19,8 @@ const Home = () => {
        <nav style={{display: "flex", justifyContent:"center",alignItems:"center"}}>
         <Explore />
         <Search />
+        <LoginButton />
+        <RegisterButton />
         <Avatar />
        </nav>
 
