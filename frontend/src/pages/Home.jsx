@@ -13,10 +13,10 @@ import Logo from "../components/navbar/Logo";
 const Home = () => {
   return (
     //  write home page UI code here
-    <div className="grid grid-flow-col grid-rows-3 gap-4" >
+    <div className="gap-4" >
       {/* Landing Page */}
     
-       <nav className="grid grid-cols-7 bg-blue-400">
+       <nav className="flex justify-evenly  items-center bg-blue-400">
         <Explore />
         <Search />
         <Logo />
