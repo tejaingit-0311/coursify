@@ -8,26 +8,31 @@ import Courses from "../components/Courses";
 import Explore from "../components/navbar/Explore";
 import Search from "../components/navbar/Search";
 import Avatar from "../components/navbar/ProfileIcon";
-import { colors } from "@mui/material";
 import LoginButton from "../components/navbar/LoginButton";
+import Logo from "../components/navbar/Logo";
 const Home = () => {
   return (
     //  write home page UI code here
-    <div className="bg-blue-300" >
+    <div className="gap-4" >
       {/* Landing Page */}
     
-       <nav style={{display: "flex", justifyContent:"center",alignItems:"center"}}>
+       <nav className="flex justify-evenly  items-center bg-blue-400">
         <Explore />
         <Search />
+        <Logo />
         <LoginButton />
         <RegisterButton />
         <Avatar />
        </nav>
 
-      {/* LandingPage -> register or login -> in the nav bar register or login links -> if user was been already registered then either signin with different acc or navigate to login */}
-      {/* <Register /> */}
-      {/* <Login /> */}
-      {/* <Courses /> */}
+       
+      <main className="bg-blue-400 mt-[20px]" >
+        <p className="font-serif tracking-tight">Ready to reimagine your career?</p>
+        <p className="font-serif tracking-tight">Get the skills and real-world experience employers want with Career Accelerators.</p>
+        
+        <Courses />
+      </main>
+
     </div>
 
   );

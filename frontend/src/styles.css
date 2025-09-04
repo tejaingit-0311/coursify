@@ -1,8 +1,8 @@
 /* start  writing from here */
-/* @import "tailwindcss"; */
+@import "tailwindcss";
 body{
-    margin: 5px ;
-    padding : 4px;
+    /* margin: 5px ;
+    padding : 4px; */
     
 }
 

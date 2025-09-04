@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 const Explore = () => {
     return (
         <div>
-            <Button variant="text" class="hover:text-red-500"> Explore</Button>
+            <Button variant="text"> Explore</Button>
         </div>
     )
 }
