@@ -5,7 +5,7 @@ function userMiddleware(req, res, next) {
   try {
     // console.log(req.headers["authorization"]);
     const token = req.headers["authorization"].substring(7);
-    // console.log(token);
+    console.log(token);
     //verify-token:
     try {
       let user = jwt.verify(token, process.env.JWT_SECRET);

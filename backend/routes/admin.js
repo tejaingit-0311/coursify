@@ -61,20 +61,21 @@ adminRouter.post("/signin", async (req, res) => {
     const { email, password } = req.query;
     //get the user:
     const adminUser = await AdminModel.findOne({ email: email });
-    // console.log(adminUser);
+  
+    console.log(adminUser);
     //compare password:
-    const isCorrect = await bcrypt.compare(password, adminUser.password);
+    // const isCorrect = await bcrypt.compare(password, adminUser.password);
 
     //if either of it(email, password) is incorrect:
-    if (!isCorrect) {
-      //req is correct but, failed to authenticate user as invalid credentials:
+
+    if(!adminUser || !(await bcrypt.compare(password, adminUser.password))){
       return res.status(401).json({
         success: false,
         error: {
           code: "INVALID_CREDENTIALS",
           message: "Invalid email or password.",
         },
-      });
+      }); 
     }
 
     //get userid -> sign into jwt -> give back res
@@ -91,9 +92,9 @@ adminRouter.post("/signin", async (req, res) => {
     res.status(200).json({
       success: true,
       data: {
-        token: token,
         code: "LOG_IN_SUCCESSFUL",
         message: "Logged in Successfully",
+        token
       },
     });
   } catch (error) {
@@ -115,7 +116,7 @@ adminRouter.use(adminMiddleware);
 adminRouter.get("/courses", async (req, res) => {
   try {
     //extract id from headers:
-    const adminUserId = req.adminUserId;
+    const { adminUserId } = req.adminUser;
 
     //covert adminUserId type String to ObjectId:
     const adminId = new ObjectId(adminUserId);
@@ -139,7 +140,7 @@ adminRouter.get("/courses", async (req, res) => {
 adminRouter.post("/courses", async (req, res) => {
   try {
     const { title, description, price, imageLink, published } = req.body;
-    const adminUserId = req.adminUserId;
+    const { adminUserId } = req.adminUser;
     const course = await CourseModel.create({
       title: title,
       description: description,
@@ -178,6 +179,7 @@ adminRouter.put(
   async (req, res) => {
     try {
       const { courseId } = req.params;
+      const { adminUserId } = req.adminUser;
       // const adminUserId = req.adminUserId;
       console.log(req.params);
       const { title, description, imageLink, price, published } = req.body;
@@ -189,6 +191,7 @@ adminRouter.put(
           price: price,
           imageLink: imageLink,
           published: published,
+          adminId: adminUserId
         },
       );
       console.log(result);

@@ -23,7 +23,7 @@ const AdminSchema = new Schema({
 //user-schema:
 const UserSchema = new Schema({
   // userId: Types.ObjectId,
-  username: { type: String, unique: true },
+  email: { type: String, unique: true },
   password: String,
 });
 

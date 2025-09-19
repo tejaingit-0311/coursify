@@ -1,0 +1,1051 @@
+{
+	"info": {
+		"_postman_id": "fcc52135-44cb-45fa-ac5b-840bc1716871",
+		"name": "online-course-app",
+		"description": "Coursify\n\n- Collaborate\n    \n- Design\n    \n- Earn\n    \n- Learn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37617720"
+	},
+	"item": [
+		{
+			"name": "admin-apis",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ram@gmail.com\",\r\n    \"username\": \"ram\",\r\n    \"password\": \"ram123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{admin}}/signup",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "signup-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"ram@gmail.com\",\r\n    \"username\": \"ram\",\r\n    \"password\": \"ram123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{adminUrl}}/signup",
+									"host": [
+										"{{adminUrl}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-NSYE6Dft9G7v5ITrbs9yCIN2PFA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 17:33:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": \"REGISTERED_SUCCESSFULLY\",\n    \"message\": \"User Registered Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{admin}}/signin?email=ram@gmail.com&password=ram123",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"signin"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "ram@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "ram123"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "signin-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{adminUrl}}/signin?email=ram@gmail.com&password=ram123",
+									"host": [
+										"{{adminUrl}}"
+									],
+									"path": [
+										"signin"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "ram@gmail.com"
+										},
+										{
+											"key": "password",
+											"value": "ram123"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "278"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"116-XXmQunkvcx2bJJgkjg6uUpeuXng\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 17:33:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YTRiNTUyNGM1Y2Y3ZmY2NTc4MGI1ZSIsImVtYWlsIjoicmFtQGdtYWlsLmNvbSIsImlhdCI6MTc1NTYyNDgxOH0.gh0zXRzzsTvJRfG1dhP3l5rALjxi0D6swZ2lGt60u0w\",\n        \"code\": \"LOG_IN_SUCCESSFUL\",\n        \"message\": \"Logged in Successfully\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "add-a-course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ5YTdmNGZiZTkwZTk3ZmM3NDczYyIsImVtYWlsIjoicmFtZXNoQGdtYWlsLmNvbSIsImlhdCI6MTc1NTU3Njk0MX0.EEEU8zKMKoLQ_FXhWtMyRGYRL4N433jUJHkg7oibt6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"DSA\",\r\n    \"description\": \"All About DSA\",\r\n    \"price\": \"100\",\r\n    \"imageLink\": \"https://100x-b-mcdn.akamai.net.in/images/ds.jpeg\",\r\n    \"published\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{admin}}/courses",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add-a-course-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"DSA\",\r\n    \"description\": \"All About DSA\",\r\n    \"price\": \"100\",\r\n    \"imageLink\": \"https://100x-b-mcdn.akamai.net.in/images/ds.jpeg\",\r\n    \"published\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{adminUrl}}/courses",
+									"host": [
+										"{{adminUrl}}"
+									],
+									"path": [
+										"courses"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "127"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7f-NUoRQXZRdT6AhLc3XHdv9zYvD2w\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 16:56:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"code\": \"COURSE_CREATED\",\n        \"message\": \"Course Created Successfully\",\n        \"courseId\": \"68a4acc73b12e0b7daf553b5\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update-a-course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ5YTdmNGZiZTkwZTk3ZmM3NDczYyIsImVtYWlsIjoicmFtZXNoQGdtYWlsLmNvbSIsImlhdCI6MTc1NTU3Njk0MX0.EEEU8zKMKoLQ_FXhWtMyRGYRL4N433jUJHkg7oibt6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"React\",\r\n    \"description\": \"All about React-Course\",\r\n    \"price\": \"1100\",\r\n    \"imageLink\": \"https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg\",\r\n    \"published\": \"false\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{admin}}/courses/68a4acc73b12e0b7daf553b5",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"courses",
+								"68a4acc73b12e0b7daf553b5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update-a-course-success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"React\",\r\n    \"description\": \"All about React-Course\",\r\n    \"price\": \"1100\",\r\n    \"imageLink\": \"https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg\",\r\n    \"published\": \"false\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{adminUrl}}/courses/68a4acc73b12e0b7daf553b5",
+									"host": [
+										"{{adminUrl}}"
+									],
+									"path": [
+										"courses",
+										"68a4acc73b12e0b7daf553b5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5c-+1osPwT8k+zPpPxlflRtDCTq0yI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 17:31:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"code\": \"UPDATE_SUCCESSFUL\",\n        \"message\": \"Course Updated Successfully\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete-a-course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ5YTdmNGZiZTkwZTk3ZmM3NDczYyIsImVtYWlsIjoicmFtZXNoQGdtYWlsLmNvbSIsImlhdCI6MTc1NTU3Njk0MX0.EEEU8zKMKoLQ_FXhWtMyRGYRL4N433jUJHkg7oibt6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{admin}}/courses/68a4acc73b12e0b7daf553b5",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"courses",
+								"68a4acc73b12e0b7daf553b5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete-a-course-success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{adminUrl}}/courses/68a4acc73b12e0b7daf553b5",
+									"host": [
+										"{{adminUrl}}"
+									],
+									"path": [
+										"courses",
+										"68a4acc73b12e0b7daf553b5"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5c-itDD8AypkmywOzlYb8qq/NXtS3g\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 17:32:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "get-all-courses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ5YTdmNGZiZTkwZTk3ZmM3NDczYyIsImVtYWlsIjoicmFtZXNoQGdtYWlsLmNvbSIsImlhdCI6MTc1NTU3Njk0MX0.EEEU8zKMKoLQ_FXhWtMyRGYRL4N433jUJHkg7oibt6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{admin}}/courses",
+							"host": [
+								"{{admin}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get-all-courses-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{adminUrl}}/courses",
+									"host": [
+										"{{adminUrl}}"
+									],
+									"path": [
+										"courses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "248"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f8-vgLCAi0Z0qiSfqQ30STpssVS20s\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 17:32:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"courses\": [\n            {\n                \"_id\": \"689d9aea4fbe90e97fc74740\",\n                \"title\": \"React\",\n                \"description\": \"All about React-Course\",\n                \"price\": \"1100\",\n                \"imageLink\": \"https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg\",\n                \"published\": true,\n                \"__v\": 0\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "It contains all Admin APIs.\n\n- Signup\n    \n- Signin\n    \n- Add-A-Course\n    \n- Get-All-Courses\n    \n- Update-A-Course\n    \n- Delete-A-Course"
+		},
+		{
+			"name": "user-apis",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ram@gmail.com\",\r\n    \"password\":\"ram@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{user}}/signup",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "signup-error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"joel@gmail.com\",\r\n    \"password\":\"Joel@123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{userUrl}}/signup",
+									"host": [
+										"{{userUrl}}"
+									],
+									"path": [
+										"signup"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-TeHRrVBsoEjyUH2dPO484YrHb5k\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 17:01:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"error\": {\n        \"code\": \"USER_ALREADY_EXISTS\",\n        \"message\": \"User Already Exists\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{user}}/signin?username=ram@gmail.com&password=ram@123",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"signin"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "ram@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "ram@123"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "signin-success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{userUrl}}/signin?username=joel@gmail.com&password=Joel@123",
+									"host": [
+										"{{userUrl}}"
+									],
+									"path": [
+										"signin"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "joel@gmail.com"
+										},
+										{
+											"key": "password",
+											"value": "Joel@123"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "284"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11c-X2RAr4Ne7UC3yRcenLHS+8ZXm08\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 17:02:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"code\": \"LOGIN_SUCCESSFUL\",\n        \"message\": \"Logged In Successfully\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGE0MTRjZDY1MDlhMDI2ZjRhOTkzNDgiLCJlbWFpbCI6ImpvZWxAZ21haWwuY29tIiwiaWF0IjoxNzU1NjIyOTM5fQ.HK7-POjfGkpc52j-L5Xux9mRpOokC3RheyTqM5AU1sQ\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "view-all-courses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGE0Yjg1ZWU1M2JiYjVhNGM1ZGJlNTEiLCJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3NTU2MjU2Mzh9.YdY21rwnhyF2BSItg7lymW_V0xFn7AQlApfuEgNr5c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{user}}/courses",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "view-all-courses-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{userUrl}}/courses",
+									"host": [
+										"{{userUrl}}"
+									],
+									"path": [
+										"courses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "464"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d0-J62m7r173/3ir1cOTys65vvfdVE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 19 Aug 2025 17:00:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"code\": \"VIEW_COURSES\",\n        \"message\": \"View All Courses\",\n        \"courses\": [\n            {\n                \"_id\": \"689d9aea4fbe90e97fc74740\",\n                \"title\": \"React\",\n                \"description\": \"All about React-Course\",\n                \"price\": \"1100\",\n                \"imageLink\": \"https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg\",\n                \"published\": true\n            },\n            {\n                \"_id\": \"68a4acc73b12e0b7daf553b5\",\n                \"title\": \"DSA\",\n                \"description\": \"All About DSA\",\n                \"price\": \"100\",\n                \"imageLink\": \"https://100x-b-mcdn.akamai.net.in/images/ds.jpeg\",\n                \"published\": true\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "purcahse-a-course",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGE0Yjg1ZWU1M2JiYjVhNGM1ZGJlNTEiLCJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3NTU2MjU2Mzh9.YdY21rwnhyF2BSItg7lymW_V0xFn7AQlApfuEgNr5c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{user}}/courses/68a4b66b4c5cf7ff65780be7",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"courses",
+								"68a4b66b4c5cf7ff65780be7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "purcahse-a-course",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{user}}/courses/68a4b66b4c5cf7ff65780be7",
+									"host": [
+										"{{user}}"
+									],
+									"path": [
+										"courses",
+										"68a4b66b4c5cf7ff65780be7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-zCTgB8cOIi3SuHIFbCQf+I5yJIw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Aug 2025 16:46:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"code\": \"PURCHASE_SUCCESSFUL\",\n        \"message\": \"Course Purchased Successful\"\n    }\n}"
+						},
+						{
+							"name": "purcahse-a-course Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{user}}/courses/68a4b66b4c5cf7ff65780be7",
+									"host": [
+										"{{user}}"
+									],
+									"path": [
+										"courses",
+										"68a4b66b4c5cf7ff65780be7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e-zCTgB8cOIi3SuHIFbCQf+I5yJIw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Aug 2025 16:46:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"code\": \"PURCHASE_SUCCESSFUL\",\n        \"message\": \"Course Purchased Successful\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "view-purchased-courses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGE0Yjg1ZWU1M2JiYjVhNGM1ZGJlNTEiLCJlbWFpbCI6InJhbUBnbWFpbC5jb20iLCJpYXQiOjE3NTU2MjU2Mzh9.YdY21rwnhyF2BSItg7lymW_V0xFn7AQlApfuEgNr5c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{user}}/courses/purchasedCourses",
+							"host": [
+								"{{user}}"
+							],
+							"path": [
+								"courses",
+								"purchasedCourses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "view-purchased-courses",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{user}}/courses/purchasedCourses",
+									"host": [
+										"{{user}}"
+									],
+									"path": [
+										"courses",
+										"purchasedCourses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "501"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f5-PllNnBPV2iaUWO+5ljVTS/SEN68\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 20 Aug 2025 15:31:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"code\": \"FETCH_SUCCESS\",\n        \"message\": \"Course Fecthed Successfully\",\n        \"purchasedCourses\": [\n            {\n                \"_id\": \"689d9aea4fbe90e97fc74740\",\n                \"title\": \"React\",\n                \"description\": \"All about React-Course\",\n                \"price\": \"1100\",\n                \"imageLink\": \"https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg\",\n                \"published\": true,\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"68a4b6674c5cf7ff65780ba9\",\n                \"title\": \"DSA\",\n                \"description\": \"All About DSA\",\n                \"price\": \"100\",\n                \"imageLink\": \"https://100x-b-mcdn.akamai.net.in/images/ds.jpeg\",\n                \"published\": true,\n                \"__v\": 0\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "It contains User's APIs:\n\n- Signup\n    \n- Signin\n    \n- View-All-Courses\n    \n- Purchase-A-Course\n    \n- View-All-Purchased-Courses"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "admin",
+			"value": "http://localhost:3001/admins"
+		},
+		{
+			"key": "user",
+			"value": "http://localhost:3001/users"
+		}
+	]
+}

@@ -52,10 +52,10 @@ userRouter.post("/signup", async (req, res) => {
 //signin:
 userRouter.post("/signin", async (req, res) => {
   try {
-    const { username, password } = req.query;
+    const { email, password } = req.query;
 
     //if either of it doesn't exist:
-    if (!username || !password) {
+    if (!email || !password) {
       return res.status(400).json({
         success: false,
         error: {
@@ -66,7 +66,7 @@ userRouter.post("/signin", async (req, res) => {
     }
 
     //find-user:
-    const user = await UserModel.findOne({username: username});
+    const user = await UserModel.findOne({email: email});
     // console.log(user);
     //1. user=null;
     //2. user = {name:"ravi", password:"123"};
@@ -92,7 +92,7 @@ userRouter.post("/signin", async (req, res) => {
     const token = jwt.sign(
       {
         userId: user.id,
-        email: user.username,
+        email: user.email,
       },
       // eslint-disable-next-line no-undef
       process.env.JWT_SECRET,
