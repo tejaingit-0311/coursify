@@ -30,6 +30,9 @@ adminRouter.post("/signup", async (req, res) => {
       });
 
       //generate a token:
+      
+
+
       res.status(201).send({
         success: true,
         code: "REGISTERED_SUCCESSFULLY",
@@ -99,6 +102,7 @@ adminRouter.post("/signin", async (req, res) => {
         token
       },
     });
+    res.cookie("token", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true});
   } catch (error) {
     console.log(error);
     res.status(500).json({

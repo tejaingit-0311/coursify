@@ -99,8 +99,6 @@ userRouter.post("/signin", async (req, res) => {
       process.env.JWT_SECRET,
     );
 
-    // console.log(user);
-
     res.status(200).json({
       success: true,
       data: {
@@ -109,6 +107,9 @@ userRouter.post("/signin", async (req, res) => {
         token,
       },
     });
+
+    res.cookie("token", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true});
+
   } catch (error) {
     console.log(error);
     res.status(400).json({
