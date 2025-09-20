@@ -28,6 +28,8 @@ adminRouter.post("/signup", async (req, res) => {
         username: username,
         password: hashedPassword,
       });
+
+      //generate a token:
       res.status(201).send({
         success: true,
         code: "REGISTERED_SUCCESSFULLY",

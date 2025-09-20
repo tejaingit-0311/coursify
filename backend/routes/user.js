@@ -9,20 +9,20 @@ require("dotenv").config();
 //signup:
 userRouter.post("/signup", async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
     //check for empty values:
-    if (username === "" || password === "")
+    if (email === "" || password === "")
       return res.status(400).json({
         success: false,
         code: "EMPTY_FIELDS",
         message: "Please provide username or password",
       });
-    console.log(username, " ", password);
+    console.log(email, " ", password);
     //hash-password:
     const hashedPassword = await bcrypt.hash(password, 8);
     // add-details:
     try {
-      await UserModel.create({ username: username, password: hashedPassword });
+      await UserModel.create({ email: email, password: hashedPassword });
       res.status(201).json({
         success: true,
         data: {
@@ -39,6 +39,7 @@ userRouter.post("/signup", async (req, res) => {
           message: "User Already Exists",
         },
       });
+      return;
     }
   } catch (error) {
     console.log(error);
@@ -117,8 +118,6 @@ userRouter.post("/signin", async (req, res) => {
   }
 });
 
-//authenticate-req/Interception:
-userRouter.use(userMiddleware);
 
 //view-all-courses:
 userRouter.get("/courses", async (req, res) => {
@@ -140,6 +139,9 @@ userRouter.get("/courses", async (req, res) => {
     });
   }
 });
+
+//authenticate-req/Interception:
+userRouter.use(userMiddleware);
 
 //purchase-a-course:
 userRouter.post("/courses/:courseId", async (req, res) => {
