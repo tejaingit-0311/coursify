@@ -14,7 +14,7 @@ app.use("/admins", adminRouter);
 app.use("/users", userRouter);
 
 //PORT:
-const PORT = dotEnv.configDotenv().parsed.PORT || 3001;
+const PORT = dotEnv.configDotenv().parsed.PORT || 3002;
 
 connectToDB()
   .then(
