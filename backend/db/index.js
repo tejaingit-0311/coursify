@@ -16,7 +16,6 @@ const ObjectId = mongoose.Types.ObjectId;
 const AdminSchema = new Schema({
   // adminId: Types.ObjectId,
   email: { type: String, unique: true },
-  username: String,
   password: String,
 });
 
@@ -51,10 +50,7 @@ const PurchasedCourseSchema = new Schema({
 const AdminModel = mongoose.model("admin", AdminSchema);
 const UserModel = mongoose.model("user", UserSchema);
 const CourseModel = mongoose.model("courses", CourseSchema);
-const PurchasedCourseModel = mongoose.model(
-  "purchased-course",
-  PurchasedCourseSchema,
-);
+const PurchasedCourseModel = mongoose.model("purchased-course", PurchasedCourseSchema);
 
 module.exports = {
   connectToDB,
