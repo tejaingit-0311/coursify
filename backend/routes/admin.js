@@ -94,15 +94,15 @@ adminRouter.post("/signin", async (req, res) => {
     );
 
     console.log({ token: token, userDetails: adminUser });
-    res.status(200).json({
-      success: true,
-      data: {
-        code: "LOG_IN_SUCCESSFUL",
-        message: "Logged in Successfully",
-        token
-      },
-    });
-    res.cookie("token", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true});
+    res.status(200).cookie("token", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true}).
+      json({
+        success: true,
+        data: {
+          code: "LOGIN_SUCCESSFUL",
+          message: "Logged In Successfully",
+          token,
+        },
+      })
   } catch (error) {
     console.log(error);
     res.status(500).json({

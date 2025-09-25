@@ -8,7 +8,7 @@ function adminMiddleware(req, res, next) {
   try {
     const authToken = req.headers["authorization"].substring(7);
 
-    // console.log(authToken);
+    console.log(authToken);
     try {
       const adminUser = jwt.verify(authToken, process.env.JWT_SECRET);
       const adminUserData = 
@@ -22,11 +22,11 @@ function adminMiddleware(req, res, next) {
     } // for invalid token: send a generic response , and log actual error in different file:S
     catch (error) {
       console.log(error);
-      res.status(401).json({
+      res.status(401).clearCookie("token").json({
         success: false,
         error: { code: "UNAUTHORIZED", message: "Cannot Access Content" },
       });
-      res.clearCookie("token");
+     
       return;
     }
   } catch (error) {

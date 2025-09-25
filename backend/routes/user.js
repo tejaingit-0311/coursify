@@ -92,24 +92,23 @@ userRouter.post("/signin", async (req, res) => {
     //give-token:
     const token = jwt.sign(
       {
-        userId: user.id,
+        userId: user._id,
         email: user.email,
       },
       // eslint-disable-next-line no-undef
       process.env.JWT_SECRET,
+      { expiresIn: "15m" }
     );
 
-    res.status(200).json({
-      success: true,
-      data: {
-        code: "LOGIN_SUCCESSFUL",
-        message: "Logged In Successfully",
-        token,
-      },
-    });
-
-    res.cookie("token", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true});
-
+    res.status(200).cookie("authToken", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true}).
+      json({
+        success: true,
+        data: {
+          code: "LOGIN_SUCCESSFUL",
+          message: "Logged In Successfully",
+          token,
+        },
+      })
   } catch (error) {
     console.log(error);
     res.status(400).json({
@@ -119,6 +118,17 @@ userRouter.post("/signin", async (req, res) => {
   }
 });
 
+//signout:
+userRouter.post("/signout", (req,res)=>{
+  try{
+    const authToken = req.cookies?.authToken;
+    res.status(204).clearCookie(authToken);
+  }catch(error){
+    console.error(error);
+    res.sendStatus(204);
+  }
+
+});
 
 //view-all-courses:
 userRouter.get("/courses", async (req, res) => {
