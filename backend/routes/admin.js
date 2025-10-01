@@ -91,6 +91,7 @@ adminRouter.post("/signin", async (req, res) => {
       },
       // eslint-disable-next-line no-undef
       process.env.JWT_SECRET,
+      {expiresIn: "15m"}
     );
 
     console.log({ token: token, userDetails: adminUser });
@@ -113,6 +114,18 @@ adminRouter.post("/signin", async (req, res) => {
       },
     });
   }
+});
+
+adminRouter.post("/signout", (req,res)=>{
+  try{
+    const token = req.headers["authorization"].substring(7);
+    console.log(token);
+    res.status(200).clearCookie(token).json({success: true, data:{code: "LOGOUT_SUCCESSFUL", message:"Logged Out Successfully"}});
+  }catch(error){
+    console.error(error);
+    res.sendStatus(500);
+  }
+
 });
 
 //authenticate-user:

@@ -100,7 +100,7 @@ userRouter.post("/signin", async (req, res) => {
       { expiresIn: "15m" }
     );
 
-    res.status(200).cookie("authToken", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true}).
+    res.status(200).cookie("token", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true, path: "/",sameSite: "none"}).
       json({
         success: true,
         data: {
@@ -121,11 +121,12 @@ userRouter.post("/signin", async (req, res) => {
 //signout:
 userRouter.post("/signout", (req,res)=>{
   try{
-    const authToken = req.cookies?.authToken;
-    res.status(204).clearCookie(authToken);
+    const token = req.headers["authorization"].substring(7);
+    console.log(token);
+    res.status(200).clearCookie(token).json({success: true, data:{code: "LOGOUT_SUCCESSFUL", message:"Logged Out Successfully"}});
   }catch(error){
     console.error(error);
-    res.sendStatus(204);
+    res.sendStatus(500);
   }
 
 });
