@@ -20,6 +20,8 @@ function userMiddleware(req, res, next) {
           message: "Authentication failed, Please try again later",
         },
       });
+      res.clearCookie("token");
+      return;
     }
   } catch (error) {
     console.log(error);

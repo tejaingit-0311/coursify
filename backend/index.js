@@ -5,9 +5,18 @@ const { adminRouter } = require("./routes/admin");
 const { userRouter } = require("./routes/user");
 const { connectToDB } = require("./db/index");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 //Middleware:
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:8080",
+  credentials:true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+}
+app.use(cors(corsOptions));
+app.use(cookieParser());
 
 //Routers:
 app.use("/admins", adminRouter);

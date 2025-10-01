@@ -30,6 +30,9 @@ adminRouter.post("/signup", async (req, res) => {
       });
 
       //generate a token:
+      
+
+
       res.status(201).send({
         success: true,
         code: "REGISTERED_SUCCESSFULLY",
@@ -88,17 +91,19 @@ adminRouter.post("/signin", async (req, res) => {
       },
       // eslint-disable-next-line no-undef
       process.env.JWT_SECRET,
+      {expiresIn: "15m"}
     );
 
     console.log({ token: token, userDetails: adminUser });
-    res.status(200).json({
-      success: true,
-      data: {
-        code: "LOG_IN_SUCCESSFUL",
-        message: "Logged in Successfully",
-        token
-      },
-    });
+    res.status(200).cookie("token", token, {expires: new Date(Date.now() + 900000), maxAge: 900000, httpOnly:true}).
+      json({
+        success: true,
+        data: {
+          code: "LOGIN_SUCCESSFUL",
+          message: "Logged In Successfully",
+          token,
+        },
+      })
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -109,6 +114,18 @@ adminRouter.post("/signin", async (req, res) => {
       },
     });
   }
+});
+
+adminRouter.post("/signout", (req,res)=>{
+  try{
+    const token = req.headers["authorization"].substring(7);
+    console.log(token);
+    res.status(200).clearCookie(token).json({success: true, data:{code: "LOGOUT_SUCCESSFUL", message:"Logged Out Successfully"}});
+  }catch(error){
+    console.error(error);
+    res.sendStatus(500);
+  }
+
 });
 
 //authenticate-user:
