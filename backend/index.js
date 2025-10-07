@@ -18,7 +18,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
-//Routers:
+// Routers:
 app.use("/admins", adminRouter);
 app.use("/users", userRouter);
 
