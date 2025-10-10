@@ -25,11 +25,11 @@ function userMiddleware(req, res, next) {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({
+    res.status(401).json({
       success: false,
       error: {
-        code: "INTERNAL_SERVER_ERROR",
-        message: "Something Went Wrong",
+        code: "UNAUTHORIZED",
+        message: "Authentication failed, Please try again later",
       },
     });
   }
