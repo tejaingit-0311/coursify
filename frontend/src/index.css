@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Coursify Design System - Golden Education Theme */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 30 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 15%;
+
+    /* Golden Primary Theme */
+    --primary: 45 100% 51%;
+    --primary-foreground: 30 10% 15%;
+    --primary-glow: 45 100% 65%;
+
+    /* Warm Secondary */
+    --secondary: 45 25% 95%;
+    --secondary-foreground: 30 10% 15%;
+
+    --muted: 45 15% 96%;
+    --muted-foreground: 30 15% 45%;
+
+    --accent: 45 85% 60%;
+    --accent-foreground: 30 10% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 45 20% 90%;
+    --input: 45 20% 92%;
+    --ring: 45 100% 51%;
+
+    /* Custom Coursify Colors */
+    --coursify-gold: 45 100% 51%;
+    --coursify-gold-light: 45 100% 65%;
+    --coursify-gold-dark: 45 100% 40%;
+    --coursify-dark: 30 15% 15%;
+    --coursify-gray: 30 5% 50%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(45 100% 51%), hsl(45 100% 65%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(45 15% 98%));
+    --gradient-dark: linear-gradient(135deg, hsl(30 15% 15%), hsl(30 10% 25%));
+
+    /* Shadows */
+    --shadow-gold: 0 10px 30px -5px hsl(45 100% 51% / 0.3);
+    --shadow-elegant: 0 20px 40px -10px hsl(30 15% 15% / 0.1);
+    --shadow-card: 0 4px 20px -2px hsl(30 15% 15% / 0.1);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 45 25% 95%;
+
+    --card: 30 15% 12%;
+    --card-foreground: 45 25% 95%;
+
+    --popover: 30 15% 12%;
+    --popover-foreground: 45 25% 95%;
+
+    --primary: 45 100% 55%;
+    --primary-foreground: 30 15% 15%;
+
+    --secondary: 30 10% 20%;
+    --secondary-foreground: 45 25% 95%;
+
+    --muted: 30 10% 18%;
+    --muted-foreground: 45 15% 65%;
+
+    --accent: 45 85% 55%;
+    --accent-foreground: 30 15% 15%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 45 25% 95%;
+
+    --border: 30 10% 22%;
+    --input: 30 10% 20%;
+    --ring: 45 100% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  /* Typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 19ch; /* limit to number of visible characters */
+    }
+  }
+  
+  @keyframes typing2 {
+    from {
+      width: 0;
+    }
+    to {
+      width: 20ch; /* adjust based on text length */
+    }
+  }
+  
+  /* Shared base typing style */
+  .typing {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid #fff;
+  }
+  
+
+   .typing-line1 {
+    animation:
+      typing 2s steps(20, end) forwards,
+      blink 0.7s step-end infinite;
+  }
+  
+  .typing-line2 {
+    animation:
+      typing 2.5s steps(25, end) 2s forwards,
+      blink 0.7s step-end infinite;
+  } 
+}
