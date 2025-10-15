@@ -9,8 +9,8 @@ require("dotenv").config();
 //signup
 adminRouter.post("/signup", async (req, res) => {
   try {
-    const { email, username, password } = req.body;
-    if (email === "" || username === "" || password === "")
+    const { email, password } = req.body;
+    if (email === "" || password === "")
       return res.status(400).json({
         success: false,
         code: "INVALID_CREDENTIALS",
@@ -25,13 +25,10 @@ adminRouter.post("/signup", async (req, res) => {
       //post the details in DB:
       await AdminModel.create({
         email: email,
-        username: username,
         password: hashedPassword,
       });
 
       //generate a token:
-      
-
 
       res.status(201).send({
         success: true,
@@ -44,7 +41,7 @@ adminRouter.post("/signup", async (req, res) => {
         success: true,
         error: {
           code: "USER_ALREADY_EXISTS",
-          message: "User Already Exists/ User Already Taken",
+          message: "User Already Exists"
         },
       });
     }
