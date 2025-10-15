@@ -47,8 +47,8 @@ const PurchasedCourseSchema = new Schema({
   userId: { type: ObjectId, ref: "user", select: false },
 });
 
-const AdminModel = mongoose.model("admin", AdminSchema);
-const UserModel = mongoose.model("user", UserSchema);
+const AdminModel = mongoose.model("admins", AdminSchema);
+const UserModel = mongoose.model("users", UserSchema);
 const CourseModel = mongoose.model("courses", CourseSchema);
 const PurchasedCourseModel = mongoose.model("purchased-course", PurchasedCourseSchema);
 

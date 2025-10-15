@@ -10,6 +10,7 @@ require("dotenv").config();
 userRouter.post("/signup", async (req, res) => {
   try {
     const { email, password } = req.body;
+    
     //check for empty values:
     if (email === "" || password === "")
       return res.status(400).json({
@@ -18,13 +19,15 @@ userRouter.post("/signup", async (req, res) => {
         message: "Please provide username or password",
       });
     console.log(email, " ", password);
+
     //hash-password:
     const hashedPassword = await bcrypt.hash(password, 8);
+
     // add-details:
     try {
       await UserModel.create({ email: email, password: hashedPassword });
       //generate a token:
-      
+
       res.status(201).json({
         success: true,
         data: {
@@ -143,7 +146,7 @@ userRouter.post("/signout", (req,res)=>{
 userRouter.get("/courses", async (req, res) => {
   try {
     let courses = await CourseModel.find().select("-__v");
-    console.log({ courses });
+    // console.log({ courses });
     res.status(200).json({
       success: true,
       data: { code: "VIEW_COURSES", message: "View All Courses", courses },

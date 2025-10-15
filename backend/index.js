@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const corsOptions = {
-  origin: "http://localhost:8080",
+  origin: ["http://10.104.217.162:8080","http://localhost:3000", "http://192.168.56.1:3000","https://coursifyapp.vercel.app"],
   credentials:true,
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
