@@ -104,7 +104,7 @@ const Index = () => {
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 py-4 border-white/30 text-black hover:bg-white/10 hover:text-[hsl(var(--coursify-gold-light))]"
+              className="text-lg px-8 py-4 border-white/30 bg-[hsl(var(--coursify-gold))] hover:bg-[hsl(var(--coursify-gold-light))] text-[hsl(var(--coursify-dark))]"
               asChild
             >
               <Link to="/admin/signup">
@@ -231,7 +231,7 @@ const Index = () => {
           <Button
             size="lg"
             variant="outline"
-            className="text-lg px-8 py-4 border-white/30 text-primary hover:bg-white/90 border-white"
+            className="text-lg px-8 py-4 bg-white text-primary hover:bg-white/90 border-white"
             asChild
           >
             <Link to="/user/signup">Get Started Free</Link>
