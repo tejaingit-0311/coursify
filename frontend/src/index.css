@@ -73,42 +73,67 @@
   }
 
   .dark {
-    --background: 30 15% 10%;
-    --foreground: 45 25% 95%;
-
-    --card: 30 15% 12%;
-    --card-foreground: 45 25% 95%;
-
-    --popover: 30 15% 12%;
-    --popover-foreground: 45 25% 95%;
-
-    --primary: 45 100% 55%;
-    --primary-foreground: 30 15% 15%;
-
-    --secondary: 30 10% 20%;
-    --secondary-foreground: 45 25% 95%;
-
-    --muted: 30 10% 18%;
-    --muted-foreground: 45 15% 65%;
-
-    --accent: 45 85% 55%;
-    --accent-foreground: 30 15% 15%;
-
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 45 25% 95%;
-
-    --border: 30 10% 22%;
-    --input: 30 10% 20%;
-    --ring: 45 100% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+    /* Background & Foreground */
+    --background: 225 15% 8%;         /* Darker to anchor contrast */
+    --foreground: 45 35% 96%;         /* Bright warm white */
+  
+    /* Surfaces */
+    --card: 225 14% 12%;              /* Slightly lighter than bg */
+    --card-foreground: 45 35% 96%;
+    --popover: 225 14% 12%;
+    --popover-foreground: 45 35% 96%;
+  
+    /* Primary (Gold) */
+    --primary: 45 100% 60%;
+    --primary-foreground: 225 15% 8%;
+    --primary-glow: 45 100% 72%;
+  
+    /* Secondary */
+    --secondary: 225 12% 18%;         /* More noticeable contrast */
+    --secondary-foreground: 45 35% 96%;
+  
+    /* Muted & Accents */
+    --muted: 225 10% 20%;
+    --muted-foreground: 45 20% 75%;
+    --accent: 45 95% 60%;
+    --accent-foreground: 225 15% 8%;
+  
+    /* Status / Alerts */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 45 35% 96%;
+  
+    /* Borders & Inputs */
+    --border: 225 10% 22%;
+    --input: 225 12% 20%;
+    --ring: 45 100% 60%;
+  
+    /* Brand Colors */
+    --coursify-gold: 45 100% 60%;
+    --coursify-gold-light: 45 100% 72%;
+    --coursify-gold-dark: 45 100% 45%;
+    --coursify-dark: 225 15% 8%;
+    --coursify-gray: 225 5% 70%;
+  
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(45 100% 60%), hsl(45 100% 72%));
+    --gradient-card: linear-gradient(145deg, hsl(225 14% 12%), hsl(225 14% 18%));
+    --gradient-dark: linear-gradient(135deg, hsl(225 15% 8%), hsl(225 12% 20%));
+  
+    /* Shadows */
+    --shadow-gold: 0 10px 30px -5px hsl(45 100% 60% / 0.25);
+    --shadow-elegant: 0 20px 40px -10px hsl(225 10% 5% / 0.3);
+    --shadow-card: 0 4px 18px -2px hsl(225 10% 5% / 0.25);
+  
+    /* Sidebar */
+    --sidebar-background: 225 15% 8%;
+    --sidebar-foreground: 45 35% 96%;
+    --sidebar-primary: 45 100% 60%;
+    --sidebar-primary-foreground: 225 15% 8%;
+    --sidebar-accent: 225 12% 18%;
+    --sidebar-accent-foreground: 45 35% 96%;
+    --sidebar-border: 225 12% 22%;
+    --sidebar-ring: 45 100% 60%;
+  } 
 }
 
 @layer base {
