@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "https://coursify-hvly.onrender.com/",
   withCredentials: true //send the cookies automatically by the client.
 });
 
