@@ -107,8 +107,9 @@ userRouter.post("/signin", async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       maxAge: 900000,
-      sameSite: "Lax",
-      secure: false  // use true only on HTTPS
+      sameSite: "Strict",
+      secure: true,  // use true only on HTTPS
+      path:"/"
     });
     res.status(200).
       json({
@@ -131,8 +132,9 @@ userRouter.post("/signin", async (req, res) => {
 //signout:
 userRouter.post("/signout", (req,res)=>{
   try{
-    // const token = req.headers["authorization"].substring(7);
-    const token = req.cookies["token"];
+    //clear the cookie:
+    //invalidate the token:
+    const token = req.cookies['token'];
     console.log(token);
     res.status(200).clearCookie("token").json({success: true, data:{code: "LOGOUT_SUCCESSFUL", message:"Logged Out Successfully"}});
   }catch(error){
